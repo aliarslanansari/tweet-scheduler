@@ -5,9 +5,10 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   padding: 2rem 0;
-  width: 100%;
   height: 100vh;
   overflow: auto;
+  text-align: justify;
+  font-family: 'Inter', sans-serif;
 `
 interface ContainerPropsTypes {
   children: React.ReactNode

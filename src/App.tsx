@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import './App.css'
+import { TweeterLogo } from './Assets/Logos'
+import Navbar from './Components/Navbar'
 import Dashboard from './Container/Dashboard'
-import { ChakraProvider } from '@chakra-ui/react'
 import GlobalStyle from './globalStyles'
 
 function App() {
   return (
-    <ChakraProvider>
+    <Fragment>
       <GlobalStyle />
+      <Navbar
+        logo={<TweeterLogo height={'4rem'} width={'5rem'} />}
+        title='Twitter'
+      />
       <Dashboard />
-    </ChakraProvider>
+    </Fragment>
   )
 }
 
