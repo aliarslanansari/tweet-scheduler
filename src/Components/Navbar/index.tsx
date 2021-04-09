@@ -1,6 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import {
+  DashboardIcon,
+  ComposeIcon,
+  PostsIcon,
+  ScheduleIcon
+} from '../../Assets/Icons'
 import colors from '../../theme/colors'
+import { heightWidthOneRem } from '../../theme/style'
 import NavbarMenuButton from '../NavbarMenuButton'
 
 const StyledNavbar = styled.div`
@@ -37,6 +44,19 @@ const LogoWrapper = styled.div`
   color: ${colors.twitterPrimaryColor};
 `
 
+const CustomDashboardLogo = styled(DashboardIcon)`
+  ${heightWidthOneRem()}
+`
+const CustomComposeIcon = styled(ComposeIcon)`
+  ${heightWidthOneRem()}
+`
+const CustomPostsIcon = styled(PostsIcon)`
+  ${heightWidthOneRem()}
+`
+const CustomScheduleIcon = styled(ScheduleIcon)`
+  ${heightWidthOneRem()}
+`
+
 interface NavBarPropTypes {
   logo: React.ReactNode
   title: string
@@ -51,12 +71,26 @@ const Navbar = (props: NavBarPropTypes) => {
         {title}
       </LogoWrapper>
       <SubContainer>
-        <NavbarMenuButton label='Dashboard' selected />
-        <NavbarMenuButton label='Dashboard' selected={false} />
-        <NavbarMenuButton label='Dashboard' selected={false} />
-        <NavbarMenuButton label='Dashboard' selected={false} />
-        <NavbarMenuButton label='Dashboard' selected={false} />
-        <NavbarMenuButton label='Dashboard' selected={false} />
+        <NavbarMenuButton
+          label='Dashboard'
+          selected
+          icon={<CustomDashboardLogo />}
+        />
+        <NavbarMenuButton
+          label='Compose'
+          selected={false}
+          icon={<CustomComposeIcon />}
+        />
+        <NavbarMenuButton
+          label='Posts'
+          selected={false}
+          icon={<CustomPostsIcon />}
+        />
+        <NavbarMenuButton
+          label='Schedule'
+          selected={false}
+          icon={<CustomScheduleIcon />}
+        />
       </SubContainer>
       <NavbarFooter></NavbarFooter>
     </StyledNavbar>

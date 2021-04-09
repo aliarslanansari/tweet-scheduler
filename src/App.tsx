@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import './App.css'
-import { TweeterLogo } from './Assets/Logos'
+import { TweeterLogo } from './Assets/Icons'
 import Navbar from './Components/Navbar'
 import Dashboard from './Container/Dashboard'
 import GlobalStyle from './globalStyles'

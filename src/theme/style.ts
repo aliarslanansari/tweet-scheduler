@@ -20,4 +20,9 @@ export const rippleEffect = (
   `
 }
 
-// export const hoverBackgroundColor = () => {}
+export const heightWidthOneRem = () => {
+  return css`
+    height: 1rem;
+    width: 1rem;
+  `
+}

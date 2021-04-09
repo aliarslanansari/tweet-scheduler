@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { PageWrap } from '../../Components/PageWrap'
 
 const CustomPageWrap = styled(PageWrap)`
-  margin-inline-start: 270px;
+  margin-inline-start: 220px;
   padding-left: 2rem;
   padding-right: 2rem;
 `
