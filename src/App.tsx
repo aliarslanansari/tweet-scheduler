@@ -8,6 +8,7 @@ import Routes from './Components/Routes'
 import GlobalStyle from './globalStyles'
 import { routeConfig } from './routeConfig'
 import { breakpoints } from './theme/style'
+import { navigationMenuOptions } from './utils/naviagtionOptions'
 import { useWindowSize } from './utils/hooks'
 
 function App() {
@@ -22,16 +23,17 @@ function App() {
   return (
     <Fragment>
       <GlobalStyle />
-      <Navbar
-        showSideBar={showSideBar}
-        logo={<TweeterLogo height={'4rem'} width={'5rem'} />}
-        title='Twitter'
-      />
-      <PageWrap showSideBar={showSideBar}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Navbar
+          navigationMenuOptions={navigationMenuOptions}
+          showSideBar={showSideBar}
+          logo={<TweeterLogo height={'4rem'} width={'5rem'} />}
+          title='Twitter'
+        />
+        <PageWrap showSideBar={showSideBar}>
           <Routes routeConfig={routeConfig} />
-        </BrowserRouter>
-      </PageWrap>
+        </PageWrap>
+      </BrowserRouter>
     </Fragment>
   )
 }

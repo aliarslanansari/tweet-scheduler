@@ -9,22 +9,22 @@ import { routeConfig } from '../routeConfig'
 export const navigationMenuOptions = [
   {
     label: 'Dashboard',
-    icon: DashboardIcon,
+    icon: <DashboardIcon height={16} width={16} />,
     path: routeConfig.dashboard.path
   },
   {
     label: 'Compose',
-    icon: ComposeIcon,
+    icon: <ComposeIcon height={16} width={16} />,
     path: routeConfig.compose.path
   },
   {
     label: 'Posts',
-    icon: PostsIcon,
+    icon: <PostsIcon height={16} width={16} />,
     path: routeConfig.posts.path
   },
   {
     label: 'Schedule',
-    icon: ScheduleIcon,
+    icon: <ScheduleIcon height={16} width={16} />,
     path: routeConfig.schedule.path
   }
 ]

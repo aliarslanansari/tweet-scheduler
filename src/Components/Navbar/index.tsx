@@ -1,13 +1,7 @@
 import React from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import {
-  DashboardIcon,
-  ComposeIcon,
-  PostsIcon,
-  ScheduleIcon
-} from '../../Assets/Icons'
 import colors from '../../theme/colors'
-import { heightWidthOneRem } from '../../theme/style'
 import NavbarMenuButton from '../NavbarMenuButton'
 
 const StyledNavbar = styled.div`
@@ -43,28 +37,22 @@ const LogoWrapper = styled.div`
   padding: 0 1rem;
   color: ${colors.twitterPrimaryColor};
 `
-
-const CustomDashboardLogo = styled(DashboardIcon)`
-  ${heightWidthOneRem()}
-`
-const CustomComposeIcon = styled(ComposeIcon)`
-  ${heightWidthOneRem()}
-`
-const CustomPostsIcon = styled(PostsIcon)`
-  ${heightWidthOneRem()}
-`
-const CustomScheduleIcon = styled(ScheduleIcon)`
-  ${heightWidthOneRem()}
-`
-
 interface NavBarPropTypes {
   logo: React.ReactNode
   title: string
   showSideBar: boolean
+  navigationMenuOptions: {
+    label: string
+    icon: JSX.Element
+    path: string
+  }[]
 }
 
 const Navbar = (props: NavBarPropTypes) => {
-  const { logo, title, showSideBar } = props
+  const { logo, title, showSideBar, navigationMenuOptions } = props
+  const currentURL = useLocation()
+  const history = useHistory()
+
   return showSideBar ? (
     <StyledNavbar>
       <LogoWrapper>
@@ -72,26 +60,20 @@ const Navbar = (props: NavBarPropTypes) => {
         {title}
       </LogoWrapper>
       <SubContainer>
-        <NavbarMenuButton
-          label='Dashboard'
-          selected
-          icon={<CustomDashboardLogo />}
-        />
-        <NavbarMenuButton
-          label='Compose'
-          selected={false}
-          icon={<CustomComposeIcon />}
-        />
-        <NavbarMenuButton
-          label='Posts'
-          selected={false}
-          icon={<CustomPostsIcon />}
-        />
-        <NavbarMenuButton
-          label='Schedule'
-          selected={false}
-          icon={<CustomScheduleIcon />}
-        />
+        {navigationMenuOptions.map((option, index) => (
+          <div
+            onClick={() => {
+              history.push(option.path)
+            }}
+            style={{ width: '100%' }}
+          >
+            <NavbarMenuButton
+              label={option.label}
+              selected={currentURL.pathname === option.path}
+              icon={option.icon}
+            />
+          </div>
+        ))}
       </SubContainer>
       <NavbarFooter></NavbarFooter>
     </StyledNavbar>
