@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import {
   DashboardIcon,
@@ -7,7 +7,8 @@ import {
   ScheduleIcon
 } from '../../Assets/Icons'
 import colors from '../../theme/colors'
-import { heightWidthOneRem } from '../../theme/style'
+import { breakpoints, heightWidthOneRem } from '../../theme/style'
+import { useWindowSize } from '../../utils/hooks'
 import NavbarMenuButton from '../NavbarMenuButton'
 
 const StyledNavbar = styled.div`
@@ -60,11 +61,12 @@ const CustomScheduleIcon = styled(ScheduleIcon)`
 interface NavBarPropTypes {
   logo: React.ReactNode
   title: string
+  showSideBar: boolean
 }
 
 const Navbar = (props: NavBarPropTypes) => {
-  const { logo, title } = props
-  return (
+  const { logo, title, showSideBar } = props
+  return showSideBar ? (
     <StyledNavbar>
       <LogoWrapper>
         {logo}
@@ -94,7 +96,7 @@ const Navbar = (props: NavBarPropTypes) => {
       </SubContainer>
       <NavbarFooter></NavbarFooter>
     </StyledNavbar>
-  )
+  ) : null
 }
 
 export default Navbar
