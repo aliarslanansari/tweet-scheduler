@@ -11,8 +11,8 @@ interface DashboardPropsTypes {
 
 const CustomPageWrap = styled(PageWrap)<DashboardPropsTypes>`
   margin-inline-start: ${(props) => (props.showSideBar ? '250px' : '0px')};
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: ${(props) => (props.showSideBar ? '10%' : '0')};
+  padding-right: ${(props) => (props.showSideBar ? '10%' : '0')};
 `
 
 const CustomContent = styled(Content)`
@@ -43,7 +43,7 @@ const Dashboard = (props: DashboardPropsTypes) => {
   return (
     <CustomPageWrap showSideBar={showSideBar}>
       <CustomContent>
-        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+        <Row>
           <CustomCol xs={24} sm={24} md={24} lg={18} xl={18} xxl={18}>
             <HeaderText text='Good Morning, Ali Arsalan' />
           </CustomCol>
