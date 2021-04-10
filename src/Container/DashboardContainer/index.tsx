@@ -1,4 +1,4 @@
-import { Col, Row } from 'antd'
+import { Button, Col, Row } from 'antd'
 import { Content } from 'antd/lib/layout/layout'
 import React from 'react'
 import styled from 'styled-components'
@@ -25,7 +25,7 @@ const Dashboard = () => {
             <HeaderText text='Good Morning, Ali Arsalan' />
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
-            <HeaderText text='Good Morning, Ali Arsalan' />
+            <Button>Create New Post</Button>
           </Col>
         </Row>
       </CustomContent>
