@@ -1,9 +1,12 @@
 import React, { Fragment, useEffect, useState } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 import { TweeterLogo } from './Assets/Icons'
 import Navbar from './Components/Navbar'
-import Dashboard from './Container/DashboardContainer'
+import { PageWrap } from './Components/PageWrap'
+import Routes from './Components/Routes'
 import GlobalStyle from './globalStyles'
+import { routeConfig } from './routeConfig'
 import { breakpoints } from './theme/style'
 import { useWindowSize } from './utils/hooks'
 
@@ -24,7 +27,11 @@ function App() {
         logo={<TweeterLogo height={'4rem'} width={'5rem'} />}
         title='Twitter'
       />
-      <Dashboard showSideBar={showSideBar} />
+      <PageWrap showSideBar={showSideBar}>
+        <BrowserRouter>
+          <Routes routeConfig={routeConfig} />
+        </BrowserRouter>
+      </PageWrap>
     </Fragment>
   )
 }

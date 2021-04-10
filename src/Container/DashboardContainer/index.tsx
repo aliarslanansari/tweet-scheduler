@@ -4,16 +4,9 @@ import Title from 'antd/lib/typography/Title'
 import styled from 'styled-components'
 import { PlusIcon } from '../../Assets/Icons'
 import HeaderText from '../../Components/HeaderText'
-import { PageWrap } from '../../Components/PageWrap'
 interface DashboardPropsTypes {
   showSideBar: boolean
 }
-
-const CustomPageWrap = styled(PageWrap)<DashboardPropsTypes>`
-  margin-inline-start: ${(props) => (props.showSideBar ? '250px' : '0px')};
-  padding-left: ${(props) => (props.showSideBar ? '10%' : '0')};
-  padding-right: ${(props) => (props.showSideBar ? '10%' : '0')};
-`
 
 const CustomContent = styled(Content)`
   padding: 0 24px 24px;
@@ -39,51 +32,48 @@ const CustomCol = styled(Col)`
 `
 
 const Dashboard = (props: DashboardPropsTypes) => {
-  const { showSideBar } = props
   return (
-    <CustomPageWrap showSideBar={showSideBar}>
-      <CustomContent>
-        <Row>
-          <CustomCol xs={24} sm={24} md={24} lg={18} xl={18} xxl={18}>
-            <HeaderText text='Good Morning, Ali Arsalan' />
-          </CustomCol>
-          <CustomCol xs={24} sm={24} md={24} lg={6} xl={6} xxl={6}>
-            <CustomDiv>
-              <CustomButton type='primary' size='large'>
-                <PlusIcon fill='#ffffff' /> Create new tweet
-              </CustomButton>
-            </CustomDiv>
-          </CustomCol>
-        </Row>
-        <Row
-          gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
-          style={{ marginTop: '2rem' }}
-        >
-          <CustomCol xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
-            <Card
-              title={<Title level={4}>Scheduled Tweets</Title>}
-              bordered={false}
-              style={{ width: '100%', borderRadius: '0.5rem' }}
-            >
-              <p>Card content</p>
-              <p>Card content</p>
-              <p>Card content</p>
-            </Card>
-          </CustomCol>
-          <CustomCol xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
-            <Card
-              title={<Title level={4}>Previous Tweets</Title>}
-              bordered={false}
-              style={{ width: '100%', borderRadius: '0.5rem' }}
-            >
-              <p>Card content</p>
-              <p>Card content</p>
-              <p>Card content</p>
-            </Card>
-          </CustomCol>
-        </Row>
-      </CustomContent>
-    </CustomPageWrap>
+    <CustomContent>
+      <Row>
+        <CustomCol xs={24} sm={24} md={24} lg={18} xl={18} xxl={18}>
+          <HeaderText text='Good Morning, Ali Arsalan' />
+        </CustomCol>
+        <CustomCol xs={24} sm={24} md={24} lg={6} xl={6} xxl={6}>
+          <CustomDiv>
+            <CustomButton type='primary' size='large'>
+              <PlusIcon fill='#ffffff' /> Create new tweet
+            </CustomButton>
+          </CustomDiv>
+        </CustomCol>
+      </Row>
+      <Row
+        gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
+        style={{ marginTop: '2rem' }}
+      >
+        <CustomCol xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
+          <Card
+            title={<Title level={4}>Scheduled Tweets</Title>}
+            bordered={false}
+            style={{ width: '100%', borderRadius: '0.5rem' }}
+          >
+            <p>Card content</p>
+            <p>Card content</p>
+            <p>Card content</p>
+          </Card>
+        </CustomCol>
+        <CustomCol xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
+          <Card
+            title={<Title level={4}>Previous Tweets</Title>}
+            bordered={false}
+            style={{ width: '100%', borderRadius: '0.5rem' }}
+          >
+            <p>Card content</p>
+            <p>Card content</p>
+            <p>Card content</p>
+          </Card>
+        </CustomCol>
+      </Row>
+    </CustomContent>
   )
 }
 

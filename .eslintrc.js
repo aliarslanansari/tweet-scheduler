@@ -24,6 +24,7 @@ module.exports = {
   plugins: ['react-hooks'],
   rules: {
     'no-template-curly-in-string': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'react-hooks/exhaustive-deps': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off'
   },

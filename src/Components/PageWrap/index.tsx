@@ -1,10 +1,16 @@
 import styled from 'styled-components'
-
-const Container = styled.div`
+interface ContainerPropsTypes {
+  showSideBar: boolean
+}
+const Container = styled.div<ContainerPropsTypes>`
+  margin-inline-start: ${(props) => (props.showSideBar ? '250px' : '0px')};
+  padding-left: ${(props) => (props.showSideBar ? '10%' : '0')};
+  padding-right: ${(props) => (props.showSideBar ? '10%' : '0')};
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  padding: 2rem 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   height: 100%;
   overflow: auto;
   text-align: justify;
@@ -12,6 +18,7 @@ const Container = styled.div`
 `
 interface ContainerPropsTypes {
   children: React.ReactNode
+  showSideBar: boolean
 }
 export const PageWrap = (props: ContainerPropsTypes) => {
   const { children } = props
