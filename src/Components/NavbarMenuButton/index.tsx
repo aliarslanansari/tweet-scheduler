@@ -27,7 +27,7 @@ const CustomMenu = styled.div<CustomMenuPropsTypes>`
   justify-content: flex-start;
   cursor: pointer;
   font-weight: 500;
-  ${rippleEffect('#BFDBFE', '#52A7E7')}
+  ${(props) => (!props.selected ? rippleEffect('#d9eaff', '#74c2fc') : '')}
 `
 
 const InnerWrap = styled.div`

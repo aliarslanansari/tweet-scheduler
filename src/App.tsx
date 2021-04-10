@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import './App.css'
 import { TweeterLogo } from './Assets/Icons'
 import Navbar from './Components/Navbar'
-import Dashboard from './Container/Dashboard'
+import Dashboard from './Container/DashboardContainer'
 import GlobalStyle from './globalStyles'
 
 function App() {

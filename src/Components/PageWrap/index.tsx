@@ -5,7 +5,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   padding: 2rem 0;
-  height: 100vh;
+  height: 100%;
   overflow: auto;
   text-align: justify;
   font-family: 'Inter', sans-serif;

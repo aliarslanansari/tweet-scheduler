@@ -14,7 +14,7 @@ const StyledNavbar = styled.div`
   position: fixed;
   background-color: ${colors.navbarBackgroundColor};
   height: 100%;
-  width: 220px;
+  width: 250px;
   align-items: center;
   justify-content: space-between;
   justify-items: center;
