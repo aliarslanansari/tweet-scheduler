@@ -12,13 +12,13 @@ import { navigationMenuOptions } from './utils/naviagtionOptions'
 import { useWindowSize } from './utils/hooks'
 
 function App() {
-  const { width } = useWindowSize()
+  const sizes = useWindowSize()
   const [showSideBar, setShowSideBar] = useState(true)
   useEffect(() => {
-    width && width < breakpoints.sm
+    sizes.width && sizes.width < breakpoints.sm
       ? setShowSideBar(false)
       : setShowSideBar(true)
-  }, [width])
+  }, [sizes.width])
 
   return (
     <Fragment>
@@ -30,7 +30,7 @@ function App() {
           logo={<TweeterLogo height={'4rem'} width={'5rem'} />}
           title='Twitter'
         />
-        <PageWrap showSideBar={showSideBar}>
+        <PageWrap sizes={sizes} showSideBar={showSideBar}>
           <Routes routeConfig={routeConfig} />
         </PageWrap>
       </BrowserRouter>
