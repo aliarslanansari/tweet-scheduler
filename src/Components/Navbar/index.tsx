@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   DashboardIcon,
@@ -7,8 +7,7 @@ import {
   ScheduleIcon
 } from '../../Assets/Icons'
 import colors from '../../theme/colors'
-import { breakpoints, heightWidthOneRem } from '../../theme/style'
-import { useWindowSize } from '../../utils/hooks'
+import { heightWidthOneRem } from '../../theme/style'
 import NavbarMenuButton from '../NavbarMenuButton'
 
 const StyledNavbar = styled.div`
