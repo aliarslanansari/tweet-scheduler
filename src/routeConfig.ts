@@ -1,3 +1,5 @@
+import { RedirectTo } from './Components/RedirectTo'
+import { RouteConfig } from './types'
 import lazyLoader from './utils/lazyLoader'
 
 export const routeConfig: RouteConfig = {
@@ -24,6 +26,11 @@ export const routeConfig: RouteConfig = {
     path: '/schedule',
     exact: true,
     isProtected: true
+  },
+  homePage: {
+    render: RedirectTo('/dashboard'),
+    exact: true,
+    path: '/'
   },
   notFoundPage: {
     render: lazyLoader(() => import('./Components/PageNotFound')),

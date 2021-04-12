@@ -1,3 +1,5 @@
+import { Redirect } from 'react-router'
+
 interface RouteItem {
   render: (props: any) => JSX.Element
   path: string
