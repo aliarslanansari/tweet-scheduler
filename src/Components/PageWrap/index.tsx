@@ -13,13 +13,13 @@ const Container = styled.div<ContainerPropsTypes>`
   padding-left: ${(props) =>
     props.sizes.width
       ? props.sizes.width < breakpoints.md
-        ? '5%'
+        ? '0%'
         : '10%'
       : '1%0'};
   padding-right: ${(props) =>
     props.sizes.width
       ? props.sizes.width < breakpoints.md
-        ? '5%'
+        ? '0%'
         : '10%'
       : '1%0'};
   box-sizing: border-box;
