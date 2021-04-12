@@ -3,10 +3,13 @@ import ComposeContainer from './Container/ComposeContainer'
 import Dashboard from './Container/DashboardContainer'
 import PostsContainer from './Container/PostsContainer'
 import ScheduleContainer from './Container/ScheduleContainer'
+import loadable from './utils/lazyLoader'
+
+const dash = () => import('./Container/DashboardContainer')
 
 export const routeConfig: RouteConfig = {
   dashboard: {
-    render: Dashboard,
+    render: loadable(dash),
     path: '/dashboard',
     exact: true,
     isProtected: true
