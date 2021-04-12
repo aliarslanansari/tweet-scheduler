@@ -1,4 +1,4 @@
-import { Col, Grid, Row } from 'antd'
+import { Col, Row } from 'antd'
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
@@ -6,6 +6,7 @@ import colors from '../../theme/colors'
 
 interface CustomColProps {
   selected: boolean
+  width: number
 }
 
 const StyledNavbar = styled.div`
@@ -39,6 +40,7 @@ const CustomCol = styled(Col)<CustomColProps>`
   justify-items: center;
   flex-direction: column;
   font-size: 0.7rem;
+  width:${(props) => `${props.width}%;`}
   background-color: ${(props) =>
     props.selected ? colors.navbarMenuButtonBackgroundColor : null};
   &:hover {
@@ -75,11 +77,10 @@ const MobileNavbar = (props: NavBarPropTypes) => {
         <CustomRow>
           {navigationMenuOptions.map((option, index) => (
             <CustomCol
-              xs={24 / navigationMenuOptions.length}
-              sm={24 / navigationMenuOptions.length}
               onClick={() => {
                 history.push(option.path)
               }}
+              width={100 / navigationMenuOptions.length}
               selected={currentURL.pathname === option.path}
             >
               {option.icon}
