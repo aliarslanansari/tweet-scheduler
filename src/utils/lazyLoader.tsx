@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 
-const loadable = (
+const lazyLoader = (
   importFunc: () => Promise<any>,
   fallback?: (props: any) => JSX.Element
 ) => {
@@ -13,4 +13,4 @@ const loadable = (
   )
 }
 
-export default loadable
+export default lazyLoader
