@@ -40,7 +40,7 @@ const CustomCol = styled(Col)<CustomColProps>`
   justify-items: center;
   flex-direction: column;
   font-size: 0.7rem;
-  width:${(props) => `${props.width}%;`}
+  width: ${(props) => `${props.width}%`};
   background-color: ${(props) =>
     props.selected ? colors.navbarMenuButtonBackgroundColor : null};
   &:hover {
