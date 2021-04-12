@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../theme/colors'
+import MobileNavbar from '../MobileNavbar'
 import NavbarMenuButton from '../NavbarMenuButton'
 
 const StyledNavbar = styled.div`
@@ -49,11 +50,16 @@ interface NavBarPropTypes {
 }
 
 const Navbar = (props: NavBarPropTypes) => {
-  const { logo, title, showSideBar, navigationMenuOptions } = props
+  const {
+    logo,
+    title,
+    showSideBar: showDesktopSideBar,
+    navigationMenuOptions
+  } = props
   const currentURL = useLocation()
   const history = useHistory()
 
-  return showSideBar ? (
+  return showDesktopSideBar ? (
     <StyledNavbar>
       <LogoWrapper>
         {logo}
@@ -77,7 +83,9 @@ const Navbar = (props: NavBarPropTypes) => {
       </SubContainer>
       <NavbarFooter></NavbarFooter>
     </StyledNavbar>
-  ) : null
+  ) : (
+    <MobileNavbar navigationMenuOptions={navigationMenuOptions} />
+  )
 }
 
 export default Navbar

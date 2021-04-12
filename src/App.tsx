@@ -13,11 +13,11 @@ import { useWindowSize } from './utils/hooks'
 
 function App() {
   const sizes = useWindowSize()
-  const [showSideBar, setShowSideBar] = useState(true)
+  const [showDesktopSideBar, setDesktopShowSideBar] = useState(true)
   useEffect(() => {
     sizes.width && sizes.width < breakpoints.sm
-      ? setShowSideBar(false)
-      : setShowSideBar(true)
+      ? setDesktopShowSideBar(false)
+      : setDesktopShowSideBar(true)
   }, [sizes.width])
 
   return (
@@ -26,11 +26,11 @@ function App() {
       <BrowserRouter>
         <Navbar
           navigationMenuOptions={navigationMenuOptions}
-          showSideBar={showSideBar}
+          showSideBar={showDesktopSideBar}
           logo={<TweeterLogo height={'4rem'} width={'5rem'} />}
           title='Twitter'
         />
-        <PageWrap sizes={sizes} showSideBar={showSideBar}>
+        <PageWrap sizes={sizes} showSideBar={showDesktopSideBar}>
           <Routes routeConfig={routeConfig} />
         </PageWrap>
       </BrowserRouter>
