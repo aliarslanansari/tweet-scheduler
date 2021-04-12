@@ -69,7 +69,7 @@ const Navbar = (props: NavBarPropTypes) => {
         {navigationMenuOptions.map((option, index) => (
           <div
             onClick={() => {
-              history.push(option.path)
+              history.replace(option.path)
             }}
             style={{ width: '100%' }}
           >
