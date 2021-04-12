@@ -1,9 +1,11 @@
 import { Button, Card, Col, Row } from 'antd'
 import { Content } from 'antd/lib/layout/layout'
 import Title from 'antd/lib/typography/Title'
+import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import { PlusIcon } from '../../Assets/Icons'
 import HeaderText from '../../Components/HeaderText'
+import { routeConfig } from '../../routeConfig'
 interface DashboardPropsTypes {
   showSideBar: boolean
 }
@@ -32,6 +34,7 @@ const CustomCol = styled(Col)`
 `
 
 const Dashboard = (props: DashboardPropsTypes) => {
+  const history = useHistory()
   return (
     <CustomContent>
       <Row>
@@ -40,7 +43,13 @@ const Dashboard = (props: DashboardPropsTypes) => {
         </CustomCol>
         <CustomCol xs={24} sm={24} md={24} lg={6} xl={6} xxl={6}>
           <CustomDiv>
-            <CustomButton type='primary' size='large'>
+            <CustomButton
+              type='primary'
+              size='large'
+              onClick={() => {
+                history.push(routeConfig.compose.path)
+              }}
+            >
               <PlusIcon fill='#ffffff' /> Create new tweet
             </CustomButton>
           </CustomDiv>

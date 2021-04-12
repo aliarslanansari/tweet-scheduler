@@ -78,7 +78,7 @@ const MobileNavbar = (props: NavBarPropTypes) => {
           {navigationMenuOptions.map((option, index) => (
             <CustomCol
               onClick={() => {
-                history.push(option.path)
+                history.replace(option.path)
               }}
               width={100 / navigationMenuOptions.length}
               selected={currentURL.pathname === option.path}

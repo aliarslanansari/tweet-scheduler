@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
+import { RouteConfig } from '../../types'
 
 interface RoutePropsTypes {
   routeConfig: RouteConfig
