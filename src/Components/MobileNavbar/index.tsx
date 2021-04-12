@@ -3,7 +3,10 @@ import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../theme/colors'
-import NavbarMenuButton from '../NavbarMenuButton'
+
+interface CustomColProps {
+  selected: boolean
+}
 
 const StyledNavbar = styled.div`
   position: fixed;
@@ -20,15 +23,15 @@ const StyledNavbar = styled.div`
   box-shadow: 1px -32px 64px -26px rgba(41, 41, 41, 0.4);
   -webkit-box-shadow: 1px -32px 64px -26px rgba(41, 41, 41, 0.4);
   -moz-box-shadow: 1px -32px 64px -26px rgba(41, 41, 41, 0.4);
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
   border: 0.2px solid #e4e0e0;
 `
 const CustomRow = styled(Row)`
   width: 100vw;
   height: 60px;
 `
-const CustomCol = styled(Col)`
+const CustomCol = styled(Col)<CustomColProps>`
   display: flex;
   align-items: center;
   align-content: center;
@@ -36,6 +39,8 @@ const CustomCol = styled(Col)`
   justify-items: center;
   flex-direction: column;
   font-size: 0.7rem;
+  background-color: ${(props) =>
+    props.selected ? colors.navbarMenuButtonBackgroundColor : null};
   &:hover {
     background-color: ${colors.navbarMenuButtonBackgroundColor};
   }
@@ -75,6 +80,7 @@ const MobileNavbar = (props: NavBarPropTypes) => {
               onClick={() => {
                 history.push(option.path)
               }}
+              selected={currentURL.pathname === option.path}
             >
               {option.icon}
               {option.label}
