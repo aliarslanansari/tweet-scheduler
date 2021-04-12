@@ -27,7 +27,7 @@ const CustomMenu = styled.div<CustomMenuPropsTypes>`
   justify-content: flex-start;
   cursor: pointer;
   font-weight: 500;
-  ${(props) => (!props.selected ? rippleEffect('#d9eaff', '#74c2fc') : '')}
+  /* ${rippleEffect('#d9eaff', '#74c2fc')} */
 `
 
 const InnerWrap = styled.div`
@@ -42,7 +42,7 @@ interface NavbarMenuButtonPropsTypes {
   label: string
   bgColor?: string
   selected: boolean
-  icon: React.ReactNode
+  icon: JSX.Element
 }
 
 const NavbarMenuButton = (props: NavbarMenuButtonPropsTypes) => {

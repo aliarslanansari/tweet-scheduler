@@ -1,19 +1,42 @@
 import styled from 'styled-components'
-
-const Container = styled.div`
+import { breakpoints } from '../../theme/style'
+interface ContainerPropsTypes {
+  showSideBar: boolean
+  children: React.ReactNode
+  sizes: {
+    width: undefined | number
+    height: undefined | number
+  }
+}
+const Container = styled.div<ContainerPropsTypes>`
+  margin-inline-start: ${(props) => (props.showSideBar ? '250px' : '0px')};
+  padding-left: ${(props) =>
+    props.sizes.width
+      ? props.sizes.width < breakpoints.md
+        ? '5%'
+        : '10%'
+      : '1%0'};
+  padding-right: ${(props) =>
+    props.sizes.width
+      ? props.sizes.width < breakpoints.md
+        ? '5%'
+        : '10%'
+      : '1%0'};
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  padding: 2rem 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   height: 100%;
   overflow: auto;
   text-align: justify;
   font-family: 'Inter', sans-serif;
 `
-interface ContainerPropsTypes {
-  children: React.ReactNode
-}
 export const PageWrap = (props: ContainerPropsTypes) => {
-  const { children } = props
-  return <Container {...props}>{children}</Container>
+  const { children, sizes } = props
+  return (
+    <Container {...props} sizes={sizes}>
+      {children}
+    </Container>
+  )
 }

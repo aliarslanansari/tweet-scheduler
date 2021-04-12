@@ -15,7 +15,7 @@ export const rippleEffect = (
 ) => {
   return css`
     background-position: center;
-    transition: background 0.8s;
+    transition: background 1s;
     &:hover {
       background: ${backgroundColorOnHover}
         radial-gradient(circle, transparent 1%, ${backgroundColorOnHover} 1%)
