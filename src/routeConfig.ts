@@ -1,4 +1,3 @@
-import PageNotFound from './Components/PageNotFound'
 import lazyLoader from './utils/lazyLoader'
 
 export const routeConfig: RouteConfig = {
@@ -27,7 +26,7 @@ export const routeConfig: RouteConfig = {
     isProtected: true
   },
   notFoundPage: {
-    render: PageNotFound,
+    render: lazyLoader(() => import('./Components/PageNotFound')),
     path: '/*'
   }
 }
