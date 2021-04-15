@@ -10,6 +10,7 @@ import { routeConfig } from './routeConfig'
 import { breakpoints } from './theme/style'
 import { navigationMenuOptions } from './utils/naviagtionOptions'
 import { useWindowSize } from './utils/hooks'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 
 function App() {
   const sizes = useWindowSize()
@@ -23,6 +24,12 @@ function App() {
   return (
     <Fragment>
       <GlobalStyle />
+      <div className='App'>
+        <header>
+          <h1>We now have Auth!</h1>
+        </header>
+        <AmplifySignOut />
+      </div>
       <BrowserRouter>
         <Navbar
           navigationMenuOptions={navigationMenuOptions}
@@ -38,4 +45,4 @@ function App() {
   )
 }
 
-export default App
+export default withAuthenticator(App)
