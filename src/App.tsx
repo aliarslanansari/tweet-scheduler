@@ -6,18 +6,18 @@ import Navbar from './Components/Navbar'
 import { PageWrap } from './Components/PageWrap'
 import Routes from './Components/Routes'
 import GlobalStyle from './globalStyles'
-import { API } from 'aws-amplify'
+import { API, Storage } from 'aws-amplify'
 import { routeConfig } from './routeConfig'
 import { breakpoints } from './theme/style'
 import { navigationMenuOptions } from './utils/naviagtionOptions'
 import { useWindowSize } from './utils/hooks'
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
-import { listTodos } from './graphql/queries'
+import { listNotes } from './graphql/queries'
 import {
-  createTodo as createTodoMutation,
-  deleteTodo as deleteTodoMutation
+  createNote as createNoteMutation,
+  deleteNote as deleteNoteMutation
 } from './graphql/mutations'
-const initialFormState = { name: '', description: '' }
+const initialFormState = { name: '', description: '', image: '' }
 
 function App() {
   const [notes, setNotes] = useState<
@@ -25,6 +25,7 @@ function App() {
       id: number
       name: string
       description: string
+      image: string
     }[]
   >([])
   const [formData, setFormData] = useState(initialFormState)
@@ -34,19 +35,40 @@ function App() {
   }, [])
 
   async function fetchNotes() {
-    const apiData = await API.graphql({ query: listTodos })
+    const apiData = await API.graphql({ query: listNotes })
     //@ts-ignore
-    setNotes(apiData?.data?.listNotes?.items)
+    const notesFromAPI = apiData?.data?.listNotes?.items
+    await Promise.all(
+      notesFromAPI.map(async (note: any) => {
+        if (note.image) {
+          const image = await Storage.get(note.image)
+          note.image = image
+        }
+        return note
+      })
+    )
+    //@ts-ignore
+    setNotes(apiData.data.listNotes.items)
   }
-
+  async function onChange(e: any) {
+    if (!e.target.files[0]) return
+    const file = e.target.files[0]
+    setFormData({ ...formData, image: file.name })
+    await Storage.put(file.name, file)
+    fetchNotes()
+  }
   async function createNote() {
     if (!formData.name || !formData.description) return
     await API.graphql({
-      query: createTodoMutation,
+      query: createNoteMutation,
       variables: { input: formData }
     })
+    if (formData.image) {
+      const image = await Storage.get(formData.image)
+      formData.image = image as string
+    }
     //@ts-ignore
-    setNotes([...(notes || []), formData])
+    setNotes([...notes, formData])
     setFormData(initialFormState)
   }
 
@@ -55,7 +77,7 @@ function App() {
     const newNotesArray = notes.filter((note) => note.name !== name)
     setNotes(newNotesArray)
     await API.graphql({
-      query: deleteTodoMutation,
+      query: deleteNoteMutation,
       variables: { input: { name } }
     })
   }
@@ -85,12 +107,14 @@ function App() {
           placeholder='Note description'
           value={formData.description}
         />
+        <input type='file' onChange={onChange} />
         <button onClick={createNote}>Create Note</button>
         <div style={{ marginBottom: 30 }}>
           {notes?.map((note) => (
             //@ts-ignore
             <div key={note.id || note.name}>
               <h2>{JSON.stringify(note, null, 2)}</h2>
+              {note.image && <img src={note.image} style={{ width: 400 }} />}
               <button onClick={() => deleteNote({ name: note?.name })}>
                 Delete note
               </button>

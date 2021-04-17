@@ -2,18 +2,20 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreateNoteInput = {
   id?: string | null,
   name: string,
   description?: string | null,
+  image?: string | null,
 };
 
-export type ModelTodoConditionInput = {
+export type ModelNoteConditionInput = {
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
-  and?: Array< ModelTodoConditionInput | null > | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
-  not?: ModelTodoConditionInput | null,
+  image?: ModelStringInput | null,
+  and?: Array< ModelNoteConditionInput | null > | null,
+  or?: Array< ModelNoteConditionInput | null > | null,
+  not?: ModelNoteConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -56,32 +58,35 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type Todo = {
-  __typename: "Todo",
+export type Note = {
+  __typename: "Note",
   id?: string,
   name?: string,
   description?: string | null,
+  image?: string | null,
   createdAt?: string,
   updatedAt?: string,
 };
 
-export type UpdateTodoInput = {
+export type UpdateNoteInput = {
   id: string,
   name?: string | null,
   description?: string | null,
+  image?: string | null,
 };
 
-export type DeleteTodoInput = {
+export type DeleteNoteInput = {
   id?: string | null,
 };
 
-export type ModelTodoFilterInput = {
+export type ModelNoteFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
+  image?: ModelStringInput | null,
+  and?: Array< ModelNoteFilterInput | null > | null,
+  or?: Array< ModelNoteFilterInput | null > | null,
+  not?: ModelNoteFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -100,89 +105,94 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelTodoConnection = {
-  __typename: "ModelTodoConnection",
-  items?:  Array<Todo | null > | null,
+export type ModelNoteConnection = {
+  __typename: "ModelNoteConnection",
+  items?:  Array<Note | null > | null,
   nextToken?: string | null,
 };
 
-export type CreateTodoMutationVariables = {
-  input?: CreateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type CreateNoteMutationVariables = {
+  input?: CreateNoteInput,
+  condition?: ModelNoteConditionInput | null,
 };
 
-export type CreateTodoMutation = {
-  createTodo?:  {
-    __typename: "Todo",
+export type CreateNoteMutation = {
+  createNote?:  {
+    __typename: "Note",
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type UpdateTodoMutationVariables = {
-  input?: UpdateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type UpdateNoteMutationVariables = {
+  input?: UpdateNoteInput,
+  condition?: ModelNoteConditionInput | null,
 };
 
-export type UpdateTodoMutation = {
-  updateTodo?:  {
-    __typename: "Todo",
+export type UpdateNoteMutation = {
+  updateNote?:  {
+    __typename: "Note",
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type DeleteTodoMutationVariables = {
-  input?: DeleteTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type DeleteNoteMutationVariables = {
+  input?: DeleteNoteInput,
+  condition?: ModelNoteConditionInput | null,
 };
 
-export type DeleteTodoMutation = {
-  deleteTodo?:  {
-    __typename: "Todo",
+export type DeleteNoteMutation = {
+  deleteNote?:  {
+    __typename: "Note",
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type GetTodoQueryVariables = {
+export type GetNoteQueryVariables = {
   id?: string,
 };
 
-export type GetTodoQuery = {
-  getTodo?:  {
-    __typename: "Todo",
+export type GetNoteQuery = {
+  getNote?:  {
+    __typename: "Note",
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type ListNotesQueryVariables = {
+  filter?: ModelNoteFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos?:  {
-    __typename: "ModelTodoConnection",
+export type ListNotesQuery = {
+  listNotes?:  {
+    __typename: "ModelNoteConnection",
     items?:  Array< {
-      __typename: "Todo",
+      __typename: "Note",
       id: string,
       name: string,
       description?: string | null,
+      image?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
@@ -190,34 +200,37 @@ export type ListTodosQuery = {
   } | null,
 };
 
-export type OnCreateTodoSubscription = {
-  onCreateTodo?:  {
-    __typename: "Todo",
+export type OnCreateNoteSubscription = {
+  onCreateNote?:  {
+    __typename: "Note",
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnUpdateTodoSubscription = {
-  onUpdateTodo?:  {
-    __typename: "Todo",
+export type OnUpdateNoteSubscription = {
+  onUpdateNote?:  {
+    __typename: "Note",
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnDeleteTodoSubscription = {
-  onDeleteTodo?:  {
-    __typename: "Todo",
+export type OnDeleteNoteSubscription = {
+  onDeleteNote?:  {
+    __typename: "Note",
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
