@@ -1,6 +1,7 @@
 import { Button, Card, Col, Row } from 'antd'
 import { Content } from 'antd/lib/layout/layout'
 import Title from 'antd/lib/typography/Title'
+import { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import { PlusIcon } from '../../Assets/Icons'
@@ -34,6 +35,29 @@ const CustomCol = styled(Col)`
 `
 
 const Dashboard = (props: DashboardPropsTypes) => {
+  useEffect(() => {
+    fetch('http://localhost:4000/auth/twitter', {
+      method: 'GET',
+      credentials: 'include',
+      //@ts-ignore
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+      .then((response) => {
+        if (response.status === 200) return response.json()
+        throw new Error('failed to authenticate user')
+      })
+      .then((responseJson) => {
+        console.log(responseJson)
+      })
+      .catch((error) => {
+        console.error('error: ', error)
+      })
+  }, [])
   const history = useHistory()
   return (
     <CustomContent>
