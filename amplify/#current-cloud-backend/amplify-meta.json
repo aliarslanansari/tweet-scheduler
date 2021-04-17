@@ -1,0 +1,80 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify0363d0a430224-staging-184035-authRole",
+      "UnauthRoleArn": "arn:aws:iam::531298258598:role/amplify-amplify0363d0a430224-staging-184035-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::531298258598:role/amplify-amplify0363d0a430224-staging-184035-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-amplify0363d0a430224-staging-184035-deployment",
+      "UnauthRoleName": "amplify-amplify0363d0a430224-staging-184035-unauthRole",
+      "StackName": "amplify-amplify0363d0a430224-staging-184035",
+      "StackId": "arn:aws:cloudformation:us-east-2:531298258598:stack/amplify-amplify0363d0a430224-staging-184035/114bf120-9e1a-11eb-8bae-0a72138cf7ca",
+      "AmplifyAppId": "dhnierf8k95k9"
+    }
+  },
+  "auth": {
+    "timelytweetbae84270": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify0363d0a430224-staging-184035-deployment/amplify-cfn-templates/auth/timelytweetbae84270-cloudformation-template.yml",
+        "logicalId": "authtimelytweetbae84270"
+      },
+      "lastPushTimeStamp": "2021-04-15T20:14:08.162Z",
+      "output": {
+        "UserPoolId": "us-east-2_kGX0dNuXc",
+        "AppClientIDWeb": "3itvchkumom9govkrrqh8ll658",
+        "AppClientID": "575ivi87e0c9fq73vfbsl5b30",
+        "IdentityPoolId": "us-east-2:bfc3cf85-4a21-4ca4-8bbf-ca67a27fc7e1",
+        "IdentityPoolName": "timelytweetbae84270_identitypool_bae84270__staging",
+        "UserPoolName": "timelytweetbae84270_userpool_bae84270"
+      },
+      "lastPushDirHash": "snFg4H3ZaDRmIcvscgmYKpjyVvI="
+    }
+  },
+  "api": {
+    "timelytweet": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7,
+              "description": "timely-tweet-api-key"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "3gw2cz7ucrb3bdsncbuuot6r5e",
+        "GraphQLAPIEndpointOutput": "https://fzqt7duo6vcidjfjazrc6doobi.appsync-api.us-east-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-wyxjpwuw7reapjnvrz2q5u5ylq"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify0363d0a430224-staging-184035-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apitimelytweet"
+      },
+      "lastPushTimeStamp": "2021-04-15T20:14:16.902Z",
+      "lastPushDirHash": "w/AL/6ZoRRdsGjYc9y33ok/HTiI="
+    }
+  },
+  "storage": {
+    "imagesStore": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify0363d0a430224-staging-184035-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+        "logicalId": "storageimagesStore"
+      },
+      "lastPushTimeStamp": "2021-04-15T20:14:16.902Z",
+      "output": {
+        "BucketName": "timely-tweet-media-store184035-staging",
+        "Region": "us-east-2"
+      },
+      "lastPushDirHash": "EoiPZ4ZRLDEmig0MLjf7odT6Wac="
+    }
+  }
+}
